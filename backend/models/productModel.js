@@ -17,31 +17,117 @@ const reviewSchema = mongoose.Schema(
 );
 
 const productSchema = mongoose.Schema(
-  {
-    user: {
+  
+      {
+       
+        name: {
+          type: String,
+          required: true,
+        },
+        image: {
+          type: String,
+          required: true,
+        },
+        producer: {
+          type: String,
+          required: true,
+        },
+        description:
+        {
+          type: String,
+          required: true,
+        },
+        brand:  {
+          type: String,
+          required: true,
+        },
+        category:  {
+          type: String,
+          required: true,
+        },
+        price:  {
+          type: Number,
+          required: true,
+        },
+        alfa:  {
+          type: String,
+          required: true,
+        },
+        form:  {
+          type: String,
+          required: true,
+        },
+        cropYear:  {
+          type: Number,
+          required: true,
+        },
+        beta:  {
+          type: String,
+          required: true,
+        },
+       
+        charecteristics:  {
+          type: String,
+          required: true,
+        },
+        beerStyles:  {
+          type: String,
+          required: true,
+        },
+        purpose:  {
+          type: String,
+          required: true,
+        },
+      
+  
+     
+        percent_solids: {
+          type: String,
+          required: true,
+        },
+        viability: {
+          type: String,
+          required: true,
+        },
+        wild_yeast: {
+          type: String,
+          required: true,
+        },
+        origin: {
+          type: String,
+          required: true,
+        },
+        bacteria: {
+          type: String,
+          required: true,
+        },
+      
+      },
+        
+    /* user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: 'User',
     },
     name: {
       type: String,
-      required: true,
+      required: false,
     },
     image: {
       type: String,
-      required: true,
+      required: false,
     },
     brand: {
       type: String,
-      required: true,
+      required: false,
     },
     category: {
       type: String,
-      required: true,
+      required: false,
     },
     description: {
       type: String,
-      required: true,
+      required: false,
     },
     reviews: [reviewSchema],
     rating: {
@@ -63,8 +149,8 @@ const productSchema = mongoose.Schema(
       type: Number,
       required: true,
       default: 0,
-    },
-  },
+    }, */
+  
   {
     timestamps: true,
   }
