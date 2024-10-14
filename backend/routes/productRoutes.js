@@ -14,6 +14,7 @@ import checkObjectId from '../middleware/checkObjectId.js';
 
 router.route('/').get(getProducts).post(protect, admin, createProduct);
 router.route('/:id/reviews').post(protect, checkObjectId, createProductReview);
+
 router.get('/top', getTopProducts);
 
 router

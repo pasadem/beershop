@@ -48,15 +48,25 @@ const getProductById = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 const createProduct = asyncHandler(async (req, res) => {
   const product = new Product({
-    name: 'Sample name',
-    price: 0,
-    user: req.user._id,
-    image: '/images/sample.jpg',
-    brand: 'Sample brand',
-    category: 'Sample category',
-    countInStock: 0,
-    numReviews: 0,
-    description: 'Sample description',
+    name: 's',
+    image: 's',
+    producer: 's',
+    description: 's',
+    brand:  's',
+    category:  's',
+    price:  10,
+    alfa:  'd',
+    form:  'd',
+    cropYear:  10,
+    beta:  'd',
+    charecteristics:  'd',
+    beerStyles: 'd',
+    purpose: 'd',
+    percent_solids: 'd',
+    viability: 'd',
+    wild_yeast: 'f',
+    origin: 'd',
+    bacteria: 'd',
   });
 
   const createdProduct = await product.save();
