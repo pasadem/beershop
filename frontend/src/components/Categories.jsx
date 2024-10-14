@@ -1,12 +1,13 @@
-import { Nav, Container } from "react-bootstrap";
+import { Nav, Container,Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import React from "react";
 
 const Categories = () => {
   return (
-    
-      <Nav className=" ms-auto sticky-top border-bottom  px-4 bg-white bg-opacity-75">
+    <Container className="border-bottom  px-100px ">
+      <Row>
+        <Col ><Nav className="  width-500px bg-opacity-75">
         <Nav.Link as={Link} to="/hops"  className="py-3 px-4 link-dark">
           Хміль
         </Nav.Link>
@@ -25,7 +26,12 @@ const Categories = () => {
         <Nav.Link as={Link} to="/cart" className=" py-3 mx-3 link-dark">
           Очистка
         </Nav.Link>
-      </Nav>
+      </Nav></Col>
+        
+      </Row>
+      
+    </Container>
+      
    
   );
 };

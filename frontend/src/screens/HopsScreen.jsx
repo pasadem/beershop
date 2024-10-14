@@ -38,15 +38,11 @@ const HopsScreen = () => {
               title="Виробник"
               menuVariant="light"
             >
-              {
-                filteredByCategory(data.products, "Hops", producer).map((product) => (
-                  <NavDropdown.Item key={ product._id} onClick={() => setProducer(product.origin)}>{product.producer}</NavDropdown.Item>
-                ))
-              }
-              {/* <NavDropdown.Item onClick={() => setProducer('Germany')}>Німеччина</NavDropdown.Item> */}
-              {/* <NavDropdown.Item href="#action/3.2">ПАР</NavDropdown.Item>
+              
+              <NavDropdown.Item onClick={() => setProducer('Germany')}>Німеччина</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">ПАР</NavDropdown.Item>
               <NavDropdown.Item onClick={() => setProducer('Slovenia')}>Словенія</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Чехія</NavDropdown.Item> */}
+              <NavDropdown.Item href="#action/3.3">Чехія</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Row>

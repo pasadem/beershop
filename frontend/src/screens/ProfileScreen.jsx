@@ -59,7 +59,7 @@ const ProfileScreen = () => {
 
         <Form onSubmit={submitHandler}>
           <Form.Group className='my-2' controlId='name'>
-            <Form.Label>Name</Form.Label>
+            <Form.Label>Ім'я</Form.Label>
             <Form.Control
               type='text'
               placeholder='Enter name'
@@ -69,7 +69,7 @@ const ProfileScreen = () => {
           </Form.Group>
 
           <Form.Group className='my-2' controlId='email'>
-            <Form.Label>Email Address</Form.Label>
+            <Form.Label>Пошта</Form.Label>
             <Form.Control
               type='email'
               placeholder='Enter email'
@@ -79,7 +79,7 @@ const ProfileScreen = () => {
           </Form.Group>
 
           <Form.Group className='my-2' controlId='password'>
-            <Form.Label>Password</Form.Label>
+            <Form.Label>Пароль</Form.Label>
             <Form.Control
               type='password'
               placeholder='Enter password'
@@ -89,7 +89,7 @@ const ProfileScreen = () => {
           </Form.Group>
 
           <Form.Group className='my-2' controlId='confirmPassword'>
-            <Form.Label>Confirm Password</Form.Label>
+            <Form.Label>Підтвердити пароль</Form.Label>
             <Form.Control
               type='password'
               placeholder='Confirm password'
@@ -99,13 +99,13 @@ const ProfileScreen = () => {
           </Form.Group>
 
           <Button type='submit' variant='primary'>
-            Update
+           Оновити
           </Button>
           {loadingUpdateProfile && <Loader />}
         </Form>
       </Col>
       <Col md={9}>
-        <h2>My Orders</h2>
+        <h2>Мої замовлення</h2>
         {isLoading ? (
           <Loader />
         ) : error ? (
@@ -117,10 +117,10 @@ const ProfileScreen = () => {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>DATE</th>
-                <th>TOTAL</th>
-                <th>PAID</th>
-                <th>DELIVERED</th>
+                <th>ДАТА</th>
+                <th>РАЗОМ</th>
+                <th>ОПЛАТА</th>
+                <th>ДОСТАВКА</th>
                 <th></th>
               </tr>
             </thead>
@@ -151,7 +151,7 @@ const ProfileScreen = () => {
                       className='btn-sm'
                       variant='light'
                     >
-                      Details
+                      Детальніше
                     </Button>
                   </td>
                 </tr>
