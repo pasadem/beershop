@@ -10,7 +10,7 @@ const OrderListScreen = () => {
 
   return (
     <>
-      <h1>Orders</h1>
+      <h1>Замовлення</h1>
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -22,11 +22,11 @@ const OrderListScreen = () => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>USER</th>
-              <th>DATE</th>
-              <th>TOTAL</th>
-              <th>PAID</th>
-              <th>DELIVERED</th>
+              <th>КЛІЄНТ</th>
+              <th>ДАТА</th>
+              <th>ВСЬОГО</th>
+              <th>ОПЛАТА</th>
+              <th>ДОСТАВКА</th>
               <th></th>
             </tr>
           </thead>
@@ -58,7 +58,7 @@ const OrderListScreen = () => {
                     variant='light'
                     className='btn-sm'
                   >
-                    Details
+                    Деталі
                   </Button>
                 </td>
               </tr>

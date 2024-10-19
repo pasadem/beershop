@@ -75,6 +75,8 @@ const ProductListScreen = () => {
                 <th>ЦІНА</th>
                 <th>КАТЕГОРІЯ</th>
                 <th>ВИРОБНИК</th>
+                <th>НАЯВНІСТЬ</th>
+                <th>РІК ВРОЖАЮ</th>
                 <th></th>
               </tr>
             </thead>
@@ -86,6 +88,8 @@ const ProductListScreen = () => {
                   <td>${product.price}</td>
                   <td>{product.category}</td>
                   <td>{product.producer}</td>
+                  <td>{product.countInStock}</td>
+                  <td>{product.cropYear}</td>
                   <td>
                     <Button
                       as={Link}

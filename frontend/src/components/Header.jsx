@@ -9,6 +9,7 @@ import {
   Badge,
 } from "react-bootstrap";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
+
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { useLogoutMutation } from "../slices/usersApiSlice";
@@ -59,12 +60,12 @@ const Header = () => {
         
                 </Row>
                 <Row>
-                email: beersystem@email.com
+                email: bs@email.com
                 </Row>
               </Col>
               <SearchBox />
               <Nav.Link as={Link} to="/cart">
-                <FaShoppingCart /> Корзина
+                <FaShoppingCart /> Кошик
                 {cartItems.length > 0 && (
                   <Badge pill bg="success" style={{ marginLeft: "5px" }}>
                     {cartItems.reduce((a, c) => a + c.qty, 0)}

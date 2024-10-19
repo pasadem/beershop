@@ -16,11 +16,12 @@ import {
   useGetProductDetailsQuery,
   useCreateReviewMutation,
 } from '../slices/productsApiSlice';
-import Rating from '../components/Rating';
+import { FcCancel, FcCheckmark } from "react-icons/fc";
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Meta from '../components/Meta';
 import { addToCart } from '../slices/cartSlice';
+
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -43,6 +44,7 @@ const ProductScreen = () => {
     refetch,
     error,
   } = useGetProductDetailsQuery(productId);
+
 
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -100,12 +102,12 @@ const ProductScreen = () => {
                 </ListGroup.Item>
               </ListGroup>
             </Col>
-            {/* <Col md={3}>
+            <Col md={3}>
               <Card>
                 <ListGroup variant='flush'>
                   <ListGroup.Item>
                     <Row>
-                      <Col>Price:</Col>
+                      <Col>Ціна:</Col>
                       <Col>
                         <strong>${product.price}</strong>
                       </Col>
@@ -113,9 +115,9 @@ const ProductScreen = () => {
                   </ListGroup.Item>
                   <ListGroup.Item>
                     <Row>
-                      <Col>Status:</Col>
+                      <Col md={8}>Наявність товару</Col>
                       <Col>
-                        {product.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}
+                        {product.countInStock > 0 ? <FcCheckmark /> : <FcCancel />}
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -124,7 +126,7 @@ const ProductScreen = () => {
                   {product.countInStock > 0 && (
                     <ListGroup.Item>
                       <Row>
-                        <Col>Qty</Col>
+                        <Col>Кількість</Col>
                         <Col>
                           <Form.Control
                             as='select'
@@ -151,15 +153,15 @@ const ProductScreen = () => {
                       disabled={product.countInStock === 0}
                       onClick={addToCartHandler}
                     >
-                      Add To Cart
+                      Додати в кошик
                     </Button>
                   </ListGroup.Item>
                 </ListGroup>
               </Card>
-            </Col> */}
+            </Col>
           </Row>
           <Row>
-            
+
           </Row>
           
         </>

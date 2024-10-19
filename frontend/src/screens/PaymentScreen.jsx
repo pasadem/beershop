@@ -17,7 +17,7 @@ const PaymentScreen = () => {
     }
   }, [navigate, shippingAddress]);
 
-  const [paymentMethod, setPaymentMethod] = useState('PayPal');
+  const [paymentMethod, setPaymentMethod] = useState('');
 
   const dispatch = useDispatch();
 
@@ -30,11 +30,31 @@ const PaymentScreen = () => {
   return (
     <FormContainer>
       <CheckoutSteps step1 step2 step3 />
-      <h1>Payment Method</h1>
+      <h3>Спосіб оплати</h3>
       <Form onSubmit={submitHandler}>
         <Form.Group>
-          <Form.Label as='legend'>Select Method</Form.Label>
+          
           <Col>
+            <Form.Check
+              className='my-2'
+              type='radio'
+              label='На карту ПриватБанку'
+              id='PrivatBank'
+              name='paymentMethod'
+              value='PrivatBank'
+            
+              onClick={(e) => setPaymentMethod(e.target.value)}
+            ></Form.Check>
+            <Form.Check
+              className='my-2'
+              type='radio'
+              label='Нова Пошта'
+              id='NovaPoshta'
+              name='paymentMethod'
+              value='NovaPoshta'
+             
+              onClick={(e) => setPaymentMethod(e.target.value)}
+            ></Form.Check>
             <Form.Check
               className='my-2'
               type='radio'
@@ -42,14 +62,14 @@ const PaymentScreen = () => {
               id='PayPal'
               name='paymentMethod'
               value='PayPal'
-              checked
-              onChange={(e) => setPaymentMethod(e.target.value)}
+              
+              onClick={(e) => setPaymentMethod(e.target.value)}
             ></Form.Check>
           </Col>
         </Form.Group>
 
         <Button type='submit' variant='primary'>
-          Continue
+          Продовжити
         </Button>
       </Form>
     </FormContainer>

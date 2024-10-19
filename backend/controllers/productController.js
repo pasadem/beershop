@@ -49,7 +49,8 @@ const getProductById = asyncHandler(async (req, res) => {
 const createProduct = asyncHandler(async (req, res) => {
   const product = new Product({
     name: 's',
-    image: 's',
+    user: req.user._id,
+    image: '/images/sample.jpg',
     producer: 's',
     description: 's',
     brand:  's',

@@ -1,5 +1,10 @@
 import { PRODUCTS_URL } from '../constants';
+import { NP_URL } from '../constants';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import { apiSlice } from './apiSlice';
+import axios from 'axios';
+
+
 
 export const productsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({

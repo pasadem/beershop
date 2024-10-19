@@ -1,5 +1,7 @@
 const products = [
   {
+    user: 'user',
+    image: '/images/sample.jpg',
     name: "African Queen",
     image: "/images/logo.png",
     producer: "ПАР",
@@ -21,8 +23,11 @@ const products = [
     wild_yeast: "< 1 на 10°6 дріжджових клітин",
     origin_firm: "Lallemand",
     bacteria: "< 1 per 10°6 дріжджових клітин",
+    countInStock: 1
   },
   {
+    user: 'user',
+    image: '/images/sample.jpg',
     name: "Southern Passion",
     image: "/images/logo.png",
     producer: "ПАР",
@@ -45,8 +50,11 @@ const products = [
     wild_yeast: "< 1 на 10°6 дріжджових клітин",
     origin_firm: "Lallemand",
     bacteria: "< 1 per 10°6 дріжджових клітин",
+    countInStock: 1
   },
   {
+    user: 'user',
+    image: '/images/sample.jpg',
     name: "Styrian Aurora",
     image: "/images/logo.png",
     producer: "Cловенія",
@@ -68,8 +76,11 @@ const products = [
     wild_yeast: "< 1 на 10°6 дріжджових клітин",
     origin_firm: "Lallemand",
     bacteria: "< 1 per 10°6 дріжджових клітин",
+    countInStock: 1
   },
   {
+    user: 'user',
+    image: '/images/sample.jpg',
     name: "Styrian Bobek",
     image: "/images/logo.png",
     producer: "Словенія",
@@ -92,8 +103,11 @@ const products = [
     wild_yeast: "< 1 на 10°6 дріжджових клітин",
     origin_firm: "Lallemand",
     bacteria: "< 1 per 10°6 дріжджових клітин",
+    countInStock: 1
   },
   {
+    user: 'user',
+    image: '/images/sample.jpg',
     name: "Ariana",
     image: "/images/logo.png",
     producer: "Німеччина",
@@ -116,8 +130,11 @@ const products = [
     wild_yeast: "< 1 на 10°6 дріжджових клітин",
     origin_firm: "Lallemand",
     bacteria: "< 1 per 10°6 дріжджових клітин",
+    countInStock: 1
   },
   {
+    user: 'user',
+    image: '/images/sample.jpg',
     name: "Callista",
     image: "/images/logo.png",
     producer: "Німеччина",
@@ -140,8 +157,11 @@ const products = [
     wild_yeast: "< 1 на 10°6 дріжджових клітин",
     origin_firm: "Lallemand",
     bacteria: "< 1 per 10°6 дріжджових клітин",
+    countInStock: 1
   },
   {
+    user: 'user',
+    image: '/images/sample.jpg',
     name: "Kazbek",
     image: "/images/logo.png",
     producer: "Чехія",
@@ -164,8 +184,11 @@ const products = [
     wild_yeast: "< 1 на 10°6 дріжджових клітин",
     origin_firm: "Lallemand",
     bacteria: "< 1 per 10°6 дріжджових клітин",
+    countInStock: 1
   },
   {
+    user: 'user',
+    image: '/images/sample.jpg',
     name: "Premiant",
     image: "/images/logo.png",
     producer: "Чехія",
@@ -188,9 +211,12 @@ const products = [
     wild_yeast: "< 1 на 10°6 дріжджових клітин",
     origin_firm: "Lallemand",
     bacteria: "< 1 per 10°6 дріжджових клітин",
+    countInStock: 1
   },
 
   {
+    user: 'user',
+    image: '/images/sample.jpg',
     name: "Lalbrew Abbaye",
     image: "/images/logo.png",
     producer: "Lallemand",
@@ -213,8 +239,11 @@ const products = [
     charecteristics: "Dank, Blueberries, Stone fruit, Black currant",
     beerStyles: "IPA, Pale Ale, Belgian Ale & Saison",
     purpose: "Dual",
+    countInStock: 1
   },
   {
+    user: 'user',
+    image: '/images/sample.jpg',
     name: "Lalbrew Belle Saison™ – Belgian Saison",
     image: "/images/logo.jpg",
     producer: "Lallemand",
@@ -237,8 +266,11 @@ const products = [
     charecteristics: "Dank, Blueberries, Stone fruit, Black currant",
     beerStyles: "IPA, Pale Ale, Belgian Ale & Saison",
     purpose: "Dual",
+    countInStock: 1
   },
   {
+    user: 'user',
+    image: '/images/sample.jpg',
     name: "SafAle™ BE‑134",
     image: "/images/logo.jpg",
     producer: "Fermentis",
@@ -261,8 +293,11 @@ const products = [
     charecteristics: "Dank, Blueberries, Stone fruit, Black currant",
     beerStyles: "IPA, Pale Ale, Belgian Ale & Saison",
     purpose: "Dual",
+    countInStock: 1
   },
   {
+    user: 'user',
+    image: '/images/sample.jpg',
     name: "SafAle™ BE‑256",
     image: "/images/logo.jpg",
     producer: "Fermentis",
@@ -285,6 +320,7 @@ const products = [
     charecteristics: "Dank, Blueberries, Stone fruit, Black currant",
     beerStyles: "IPA, Pale Ale, Belgian Ale & Saison",
     purpose: "Dual",
+    countInStock: 1
   },
 ];
 
