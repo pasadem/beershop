@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
   return (
-    <Card className=" my-2 p-3 rounded">
+    <Card className=" my-2 p-3 rounded hight-200px">
       <Link to={`/product/${product._id}`}>
         <Card.Img  src={product.image} variant="top" />
       </Link>
       <Card.Body as="div">
         <Link to={`/product/${product._id}`}>
           <Card.Title >
-            <strong>{product.name}</strong>
+            <h6><strong>{product.name}</strong></h6>
           </Card.Title>
         </Link>
         <Card.Text as="div">Виробник: {product.producer}</Card.Text>
