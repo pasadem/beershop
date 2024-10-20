@@ -17,7 +17,7 @@ const ProductEditScreen = () => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState('');
-  const [brand, setBrand] = useState('');
+  const [producer, setBrand] = useState('');
   const [category, setCategory] = useState('');
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState('');
@@ -45,7 +45,7 @@ const ProductEditScreen = () => {
         name,
         price,
         image,
-        brand,
+        producer,
         category,
         description,
         countInStock,
@@ -63,7 +63,7 @@ const ProductEditScreen = () => {
       setName(product.name);
       setPrice(product.price);
       setImage(product.image);
-      setBrand(product.brand);
+      setBrand(product.producer);
       setCategory(product.category);
       setCountInStock(product.countInStock);
       setDescription(product.description);
@@ -137,7 +137,7 @@ const ProductEditScreen = () => {
               <Form.Control
                 type='text'
                 placeholder='Ввести виробника'
-                value={brand}
+                value={producer}
                 onChange={(e) => setBrand(e.target.value)}
               ></Form.Control>
             </Form.Group>
