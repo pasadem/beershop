@@ -50,7 +50,7 @@ const createProduct = asyncHandler(async (req, res) => {
   const product = new Product({
     name: 's',
     user: req.user._id,
-    image: '/images/sample.jpg',
+    image: '../../uploads/logo.png',
     producer: 's',
     description: 's',
     brand:  's',
@@ -58,7 +58,7 @@ const createProduct = asyncHandler(async (req, res) => {
     price:  10,
     alfa:  'd',
     form:  'd',
-    cropYear:  10,
+    cropYear:  '10',
     beta:  'd',
     charecteristics:  'd',
     beerStyles: 'd',
@@ -68,6 +68,7 @@ const createProduct = asyncHandler(async (req, res) => {
     wild_yeast: 'f',
     origin: 'd',
     bacteria: 'd',
+    countInStock: 2
   });
 
   const createdProduct = await product.save();
@@ -78,18 +79,20 @@ const createProduct = asyncHandler(async (req, res) => {
 // @route   PUT /api/products/:id
 // @access  Private/Admin
 const updateProduct = asyncHandler(async (req, res) => {
-  const { name, price, description, image, producer, category, countInStock } =
+  const { name, price, description, image, producer, cropYear, category, countInStock } =
     req.body;
 
   const product = await Product.findById(req.params.id);
 
   if (product) {
+  
     product.name = name;
     product.price = price;
     product.description = description;
     product.image = image;
     product.producer = producer;
     product.category = category;
+    product.cropYear = cropYear;
     product.countInStock = countInStock;
 
     const updatedProduct = await product.save();

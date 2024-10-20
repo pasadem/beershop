@@ -73,6 +73,7 @@ const ProductListScreen = () => {
                 <th>ID</th>
                 <th>НАЗВА</th>
                 <th>ЦІНА</th>
+                <th>ФОТО</th>
                 <th>КАТЕГОРІЯ</th>
                 <th>ВИРОБНИК</th>
                 <th>НАЯВНІСТЬ</th>
@@ -86,6 +87,7 @@ const ProductListScreen = () => {
                   <td>{product._id}</td>
                   <td>{product.name}</td>
                   <td>${product.price}</td>
+                  {/* <td>{product.image}</td> */}
                   <td>{product.category}</td>
                   <td>{product.producer}</td>
                   <td>{product.countInStock}</td>

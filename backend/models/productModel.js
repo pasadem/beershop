@@ -62,7 +62,7 @@ const productSchema = mongoose.Schema(
           required: true,
         },
         cropYear:  {
-          type: Number,
+          type: String,
           required: true,
         },
         beta:  {

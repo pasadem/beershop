@@ -21,6 +21,7 @@ const ProductEditScreen = () => {
   const [category, setCategory] = useState('');
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState('');
+  const [cropYear, setCropYear] = useState('')
 
   const {
     data: product,
@@ -49,6 +50,7 @@ const ProductEditScreen = () => {
         category,
         description,
         countInStock,
+        cropYear,
       }).unwrap(); // NOTE: here we need to unwrap the Promise to catch any rejection in our catch block
       toast.success('Товар оновлено');
       refetch();
@@ -67,6 +69,7 @@ const ProductEditScreen = () => {
       setCategory(product.category);
       setCountInStock(product.countInStock);
       setDescription(product.description);
+      setCropYear(product.cropYear);
     }
   }, [product]);
 
@@ -169,6 +172,15 @@ const ProductEditScreen = () => {
                 placeholder='Ввести описання'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId='description'>
+              <Form.Label>Рік врожаю</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Ввести рік'
+                value={cropYear}
+                onChange={(e) => setCropYear(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
