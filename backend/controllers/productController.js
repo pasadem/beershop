@@ -54,12 +54,13 @@ const createProduct = asyncHandler(async (req, res) => {
     producer: 's',
     description: 's',
     brand:  's',
-    category:  's',
+    category:  'Hops',
     price:  10,
     alfa:  'd',
-    form:  'd',
+    ferment_temp:  0,
+    form: 'd',
     cropYear:  '10',
-    beta:  'd',
+    ferment_type:  'd',
     charecteristics:  'd',
     beerStyles: 'd',
     purpose: 'd',
@@ -79,7 +80,7 @@ const createProduct = asyncHandler(async (req, res) => {
 // @route   PUT /api/products/:id
 // @access  Private/Admin
 const updateProduct = asyncHandler(async (req, res) => {
-  const { name, price, description, image, producer, cropYear, category, countInStock } =
+  const { name, price, ferment_type, ferment_temp, alfa, description, image, origin, cropYear, category, countInStock } =
     req.body;
 
   const product = await Product.findById(req.params.id);
@@ -90,10 +91,13 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.price = price;
     product.description = description;
     product.image = image;
-    product.producer = producer;
+    product.origin = origin;
     product.category = category;
     product.cropYear = cropYear;
     product.countInStock = countInStock;
+    product.ferment_temp = ferment_temp;
+    product.ferment_type = ferment_type;
+    product.alfa = alfa;
 
     const updatedProduct = await product.save();
     res.json(updatedProduct);

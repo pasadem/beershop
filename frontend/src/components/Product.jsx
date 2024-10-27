@@ -3,18 +3,15 @@ import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
   return (
-    <Card className=" my-2 p-3 rounded " style={{ height: 350}}>
+    <Card className=" my-2 rounded " style={{ height: 250 }}>
       <Link to={`/product/${product._id}`}>
-        <Card.Img  src={product.image} variant="top" />
+        <Card.Img src={product.image} variant="top" style={{ height: 150 }}/>
       </Link>
-      <Card.Body as="div">
-        <Link to={`/product/${product._id}`}>
-          <div>
-            <h6><strong>{product.name}</strong></h6>
-          </div>
-        </Link>
-        <Card.Text as="div">Виробник: {product.producer}</Card.Text>
-        <Card.Text as="h5">${product.price}</Card.Text>
+      <Card.Body>
+      <Card.Title as="strong">{product.name}</Card.Title>
+
+        <Card.Text as="div">Виробник: {product.origin}</Card.Text>
+        <Card.Text as="h5">{product.price} грн</Card.Text>
       </Card.Body>
     </Card>
   );

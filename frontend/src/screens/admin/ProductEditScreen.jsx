@@ -1,27 +1,30 @@
-import { useState, useEffect } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
-import Message from '../../components/Message';
-import Loader from '../../components/Loader';
-import FormContainer from '../../components/FormContainer';
-import { toast } from 'react-toastify';
+import { useState, useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { Form, Button, Container } from "react-bootstrap";
+import Message from "../../components/Message";
+import Loader from "../../components/Loader";
+import FormContainer from "../../components/FormContainer";
+import { toast } from "react-toastify";
 import {
   useGetProductDetailsQuery,
   useUpdateProductMutation,
   useUploadProductImageMutation,
-} from '../../slices/productsApiSlice';
+} from "../../slices/productsApiSlice";
 
 const ProductEditScreen = () => {
   const { id: productId } = useParams();
 
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
-  const [image, setImage] = useState('');
-  const [producer, setBrand] = useState('');
-  const [category, setCategory] = useState('');
+  const [image, setImage] = useState("");
+  const [origin, setProducer] = useState("");
+  const [category, setCategory] = useState("");
   const [countInStock, setCountInStock] = useState(0);
-  const [description, setDescription] = useState('');
-  const [cropYear, setCropYear] = useState('')
+  const [description, setDescription] = useState("");
+  const [cropYear, setCropYear] = useState("");
+  const [alfa, setAlfa] = useState('');
+  const [ferment_temp, setFermentTemp] = useState(0);
+  const [ferment_type, setFermentType] = useState('')
 
   const {
     data: product,
@@ -46,15 +49,18 @@ const ProductEditScreen = () => {
         name,
         price,
         image,
-        producer,
+        origin,
         category,
         description,
         countInStock,
         cropYear,
+        alfa,
+        ferment_temp,
+        ferment_type,
       }).unwrap(); // NOTE: here we need to unwrap the Promise to catch any rejection in our catch block
-      toast.success('Товар оновлено');
+      toast.success("Товар оновлено");
       refetch();
-      navigate('/admin/productlist');
+      navigate("/admin/productlist");
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
@@ -65,17 +71,20 @@ const ProductEditScreen = () => {
       setName(product.name);
       setPrice(product.price);
       setImage(product.image);
-      setBrand(product.producer);
+      setProducer(product.origin);
       setCategory(product.category);
       setCountInStock(product.countInStock);
       setDescription(product.description);
       setCropYear(product.cropYear);
+      setAlfa(product.alfa);
+      setFermentTemp(product.ferment_temp);
+      setFermentType(product.ferment_type);
     }
   }, [product]);
 
   const uploadFileHandler = async (e) => {
     const formData = new FormData();
-    formData.append('image', e.target.files[0]);
+    formData.append("image", e.target.files[0]);
     try {
       const res = await uploadProductImage(formData).unwrap();
       toast.success(res.message);
@@ -87,107 +96,166 @@ const ProductEditScreen = () => {
 
   return (
     <>
-      <Link to='/admin/productlist' className='btn btn-light my-3'>
+      <Link to="/admin/productlist" className="btn btn-light my-3">
         Назад
       </Link>
       <FormContainer>
-        <h1>Редагувати товар</h1>
+        <h4>Редагувати товар</h4>
+        
         {loadingUpdate && <Loader />}
         {isLoading ? (
           <Loader />
         ) : error ? (
-          <Message variant='danger'>{error.data.message}</Message>
+          <Message variant="danger">{error.data.message}</Message>
         ) : (
+          
           <Form onSubmit={submitHandler}>
-            <Form.Group controlId='name'>
+            <Form.Group controlId="name">
               <Form.Label>Назва</Form.Label>
               <Form.Control
-                type='name'
-                placeholder='Ввести назву'
+                type="name"
+                placeholder="Ввести назву"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId='price'>
+            <Form.Group controlId="price">
               <Form.Label>Ціна</Form.Label>
               <Form.Control
-                type='number'
-                placeholder='Enter price'
+                type="number"
+                placeholder="Enter price"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId='image'>
+            <Form.Group controlId="image">
               <Form.Label>Зображення</Form.Label>
               <Form.Control
-                type='text'
-                placeholder='Enter image url'
+                type="text"
+                placeholder="Enter image url"
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
               <Form.Control
-                label='Вибрати файл'
+                label="Вибрати файл"
                 onChange={uploadFileHandler}
-                type='file'
+                type="file"
               ></Form.Control>
               {loadingUpload && <Loader />}
             </Form.Group>
 
-            <Form.Group controlId='brand'>
+            <Form.Group controlId="brand">
               <Form.Label>Виробник</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Ввести виробника'
-                value={producer}
-                onChange={(e) => setBrand(e.target.value)}
-              ></Form.Control>
+              <Form.Select>
+                <option>
+                  {origin}
+                </option>
+
+                <option
+                  type="text"
+                  placeholder="Ввести виробника"
+                  value={origin}
+                  onClick={() => setProducer("Germany")}
+                >
+                  Німеччина
+                </option>
+                <option
+                  type="text"
+                  placeholder="Ввести виробника"
+                  value={origin}
+                  onClick={() => setProducer("Slovenia")}
+                >
+                  Словенія
+                </option>
+                <option
+                  type="text"
+                  placeholder="Ввести виробника"
+                  value={origin}
+                  onClick={() => setProducer("South Africa")}
+                >
+                  ПАР
+                </option>
+
+                <option
+                  type="text"
+                  placeholder="Ввести виробника"
+                  value={origin}
+                  onClick={() => setProducer("Fermentis")}
+                >
+                  FERMENTIS
+                </option>
+                <option
+                  type="text"
+                  placeholder="Ввести виробника"
+                  value={origin}
+                  onClick={() => setProducer("Lallemand")}
+                >
+                  LALLEMAND
+                </option>
+              </Form.Select>
             </Form.Group>
 
-            <Form.Group controlId='countInStock'>
+            <Form.Group controlId="countInStock">
               <Form.Label>Кількість на залишку</Form.Label>
               <Form.Control
-                type='number'
-                placeholder='Ввести кількість'
+                type="number"
+                placeholder="Ввести кількість"
                 value={countInStock}
                 onChange={(e) => setCountInStock(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId='category'>
+            <Form.Group controlId="category">
               <Form.Label>Категорія</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Ввести категорію'
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              ></Form.Control>
+              <Form.Select>
+                <option>
+                  {category}
+                </option>
+
+                <option
+                  type="text"
+                  placeholder="Ввести виробника"
+                  value={category}
+                  onClick={() => setCategory("Hops")}
+                >
+                  Хміль
+                </option>
+                <option
+                  type="text"
+                  placeholder="Ввести виробника"
+                  value={category}
+                  onClick={() => setCategory("Yeast")}
+                >
+                  Дріжджі
+                </option>
+              </Form.Select>
             </Form.Group>
 
-            <Form.Group controlId='description'>
+            <Form.Group controlId="description">
               <Form.Label>Описання</Form.Label>
               <Form.Control
-                type='text'
-                placeholder='Ввести описання'
+                type="text"
+                placeholder="Ввести описання"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               ></Form.Control>
             </Form.Group>
-            <Form.Group controlId='description'>
+            <Form.Group controlId="description">
               <Form.Label>Рік врожаю</Form.Label>
               <Form.Control
-                type='text'
-                placeholder='Ввести рік'
+                type="text"
+                placeholder="Ввести рік"
                 value={cropYear}
                 onChange={(e) => setCropYear(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Button
-              type='submit'
-              variant='primary'
-              style={{ marginTop: '1rem' }}
+              type="submit"
+              variant="primary"
+              style={{ marginTop: "1rem" }}
             >
               Оновити
             </Button>

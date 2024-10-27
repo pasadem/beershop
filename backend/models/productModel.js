@@ -34,7 +34,7 @@ const productSchema = mongoose.Schema(
         },
         producer: {
           type: String,
-          required: true,
+          required: false,
         },
         description:
         {
@@ -57,6 +57,14 @@ const productSchema = mongoose.Schema(
           type: String,
           required: true,
         },
+        ferment_temp:  {
+          type: Number,
+          required: false,
+        },
+        ferment_type:  {
+          type: String,
+          required: false,
+        },
         form:  {
           type: String,
           required: true,
@@ -65,10 +73,7 @@ const productSchema = mongoose.Schema(
           type: String,
           required: true,
         },
-        beta:  {
-          type: String,
-          required: true,
-        },
+       
        
         charecteristics:  {
           type: String,
