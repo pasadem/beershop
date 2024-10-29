@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Row,
   Col,
@@ -10,18 +10,18 @@ import {
   Card,
   Button,
   Form,
-} from 'react-bootstrap';
-import { toast } from 'react-toastify';
+} from "react-bootstrap";
+import { toast } from "react-toastify";
 import {
   useGetProductDetailsQuery,
   useCreateReviewMutation,
-} from '../slices/productsApiSlice';
+} from "../slices/productsApiSlice";
 import { FcCancel, FcCheckmark } from "react-icons/fc";
-import Loader from '../components/Loader';
-import Message from '../components/Message';
-import Meta from '../components/Meta';
-import { addToCart } from '../slices/cartSlice';
-
+import Loader from "../components/Loader";
+import Message from "../components/Message";
+import Meta from "../components/Meta";
+import { addToCart } from "../slices/cartSlice";
+import { weightHandler } from "../utils/weightHundler";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -31,11 +31,11 @@ const ProductScreen = () => {
 
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState("");
 
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
-    navigate('/cart');
+    navigate("/cart");
   };
 
   const {
@@ -44,7 +44,6 @@ const ProductScreen = () => {
     refetch,
     error,
   } = useGetProductDetailsQuery(productId);
-
 
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -61,7 +60,7 @@ const ProductScreen = () => {
         comment,
       }).unwrap();
       refetch();
-      toast.success('Review created successfully');
+      toast.success("Review created successfully");
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
@@ -69,13 +68,13 @@ const ProductScreen = () => {
 
   return (
     <>
-      <Link className='btn btn-light my-3' to='/'>
+      <Link className="btn btn-light my-3" to="/">
         Назад
       </Link>
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant='danger'>
+        <Message variant="danger">
           {error?.data?.message || error.error}
         </Message>
       ) : (
@@ -83,12 +82,25 @@ const ProductScreen = () => {
           <Meta title={product.name} description={product.description} />
           <Row>
             <Col md={4}>
-              <Image src={product.image} alt={product.name} fluid />
+              <ListGroup variant="flush">
+                <ListGroup.Item>
+                  <Image src={product.image} alt={product.name} fluid />
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <Row>Ціна {weightHandler(product)}</Row>
+                  <Row>Упаковка: {product.weight}</Row>
+                  <Row>Тип бродіння - верхній</Row>
+                  <Row>
+                    Ідеальна температура бродіння: {product.ferment_temp}
+                  </Row>
+                  <Row>Виробник: {product.origin}</Row>
+                </ListGroup.Item>
+              </ListGroup>
             </Col>
             <Col md={4}>
-              <ListGroup variant='flush'>
+              <ListGroup variant="flush">
                 <ListGroup.Item>
-                  <h3>{product.name}</h3>
+                  <h5>{product.name}</h5>
                 </ListGroup.Item>
                 {/* <ListGroup.Item>
                   <Rating
@@ -96,7 +108,7 @@ const ProductScreen = () => {
                     text={`${product.numReviews} reviews`}
                   />
                 </ListGroup.Item> */}
-                <ListGroup.Item>Ціна: ${product.price}</ListGroup.Item>
+
                 <ListGroup.Item>
                   Докладніше: {product.description}
                 </ListGroup.Item>
@@ -104,11 +116,11 @@ const ProductScreen = () => {
             </Col>
             <Col md={3}>
               <Card>
-                <ListGroup variant='flush'>
+                <ListGroup variant="flush">
                   <ListGroup.Item>
                     <Row>
                       <Col>Ціна:</Col>
-                      
+
                       <Col>
                         <strong>{product.price}</strong>
                       </Col>
@@ -118,19 +130,22 @@ const ProductScreen = () => {
                     <Row>
                       <Col md={8}>Наявність товару</Col>
                       <Col>
-                        {product.countInStock > 0 ? <FcCheckmark /> : <FcCancel />}
+                        {product.countInStock > 0 ? (
+                          <FcCheckmark />
+                        ) : (
+                          <FcCancel />
+                        )}
                       </Col>
                     </Row>
                   </ListGroup.Item>
 
-                 
                   {product.countInStock > 0 && (
                     <ListGroup.Item>
                       <Row>
                         <Col>Кількість</Col>
                         <Col>
                           <Form.Control
-                            as='select'
+                            as="select"
                             value={qty}
                             onChange={(e) => setQty(Number(e.target.value))}
                           >
@@ -149,8 +164,8 @@ const ProductScreen = () => {
 
                   <ListGroup.Item>
                     <Button
-                      className='btn-block'
-                      type='button'
+                      className="btn-block"
+                      type="button"
                       disabled={product.countInStock === 0}
                       onClick={addToCartHandler}
                     >
@@ -161,10 +176,7 @@ const ProductScreen = () => {
               </Card>
             </Col>
           </Row>
-          <Row>
-
-          </Row>
-          
+          <Row></Row>
         </>
       )}
     </>

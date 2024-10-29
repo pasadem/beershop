@@ -88,7 +88,7 @@ const ProductListScreen = () => {
           <Table striped bordered hover responsive className="table-sm">
             <thead>
               <tr>
-                <th>ID</th>
+                
                 <th>НАЗВА</th>
                 <th>ЦІНА</th>
 
@@ -102,7 +102,7 @@ const ProductListScreen = () => {
             <tbody>
               {(data.products).map((product) => (
                 <tr key={product._id}>
-                  <td>{product._id}</td>
+                  
                   <td>{product.name}</td>
                   <td>${product.price}</td>
 

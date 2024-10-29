@@ -58,7 +58,7 @@ const productSchema = mongoose.Schema(
           required: true,
         },
         ferment_temp:  {
-          type: Number,
+          type: String,
           required: false,
         },
         ferment_type:  {
@@ -74,7 +74,10 @@ const productSchema = mongoose.Schema(
           required: true,
         },
        
-       
+       weight: {
+        type: String,
+        required: false,
+       },
         charecteristics:  {
           type: String,
           required: true,

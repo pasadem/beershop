@@ -23,8 +23,9 @@ const ProductEditScreen = () => {
   const [description, setDescription] = useState("");
   const [cropYear, setCropYear] = useState("");
   const [alfa, setAlfa] = useState('');
-  const [ferment_temp, setFermentTemp] = useState(0);
+  const [ferment_temp, setFermentTemp] = useState('');
   const [ferment_type, setFermentType] = useState('')
+  const [weight, setWeight] = useState('')
 
   const {
     data: product,
@@ -57,6 +58,7 @@ const ProductEditScreen = () => {
         alfa,
         ferment_temp,
         ferment_type,
+        weight,
       }).unwrap(); // NOTE: here we need to unwrap the Promise to catch any rejection in our catch block
       toast.success("Товар оновлено");
       refetch();
@@ -79,6 +81,7 @@ const ProductEditScreen = () => {
       setAlfa(product.alfa);
       setFermentTemp(product.ferment_temp);
       setFermentType(product.ferment_type);
+      setWeight(product.weight);
     }
   }, [product]);
 
@@ -127,6 +130,24 @@ const ProductEditScreen = () => {
                 placeholder="Enter price"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId="price">
+              <Form.Label>Вага</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter price"
+                value={weight}
+                onChange={(e) => setWeight(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId="price">
+              <Form.Label>Температура бродіння</Form.Label>
+              <Form.Control
+                type="textr"
+                placeholder="Температура"
+                value={ferment_temp}
+                onChange={(e) => setFermentTemp(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
