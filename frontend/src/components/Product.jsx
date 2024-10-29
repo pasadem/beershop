@@ -1,22 +1,29 @@
-import { Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { weightHandler } from "../utils/weightHundler";
 
 const Product = ({ product }) => {
+
+  
   return (
-    <Card className='my-2  rounded'>
+    <Card className="my-2  rounded">
       <Link to={`/product/${product._id}`}>
-        <Card.Img src={product.image} variant='top' style={{ height: '180px' }}/>
+        <Card.Img
+          src={product.image}
+          variant="top"
+          style={{ height: "180px" }}
+        />
       </Link>
 
-      <Card.Body>   
+      <Card.Body>
         <Link to={`/product/${product._id}`}>
-          <Card.Title as='div' className='product-title'>
+          <Card.Text as="div" className="product-title">
             <strong>{product.name}</strong>
-          </Card.Title>
+          </Card.Text>
         </Link>
+        <Card.Text as="div">Виробник: {product.origin}</Card.Text>
 
-        
-        <Card.Text as='h3'>${product.price}</Card.Text>
+        <Card.Text as="div">{weightHandler(product)}</Card.Text>
       </Card.Body>
     </Card>
   );
