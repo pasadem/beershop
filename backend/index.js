@@ -39,7 +39,7 @@ if (process.env.NODE_ENV === 'production') {
   );
 } else {
   const __dirname = path.resolve();
-  app.use('/frontend/public/images', express.static(path.join(__dirname, '/images')));
+  app.use('/frontend/public/images', express.static(path.join(__dirname, '/frontend/public/images')));
   app.get('/', (req, res) => {
     res.send('API is running....');
   });
