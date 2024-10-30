@@ -48,29 +48,29 @@ const getProductById = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 const createProduct = asyncHandler(async (req, res) => {
   const product = new Product({
-    name: 's',
+    name: 'Назва',
     user: req.user._id,
-    image: '/images/logo.png',
-    producer: 's',
-    description: 's',
-    brand:  's',
-    category:  'Hops',
-    price:  10,
-    alfa:  'd',
+    image: '/images/logo.jpg',
+    producer: 'Виробник',
+    description: 'Описання',
+    brand:  'Марка',
+    category:  'Категорія',
+    price:  0,
+    alfa:  'Вміст альфа',
     ferment_temp:  0,
     form: 'd',
-    cropYear:  '10',
-    ferment_type:  'd',
-    charecteristics:  'd',
-    beerStyles: 'd',
+    cropYear:  '2023',
+    ferment_type:  'Тип ферментації',
+    charecteristics:  'Характеристики',
+    beerStyles: 'Стиль пива',
     purpose: 'd',
     percent_solids: 'd',
     viability: 'd',
     wild_yeast: 'f',
-    origin: 'd',
+    origin: 'Виробник',
     bacteria: 'd',
     countInStock: 2,
-    weight: '0.5'
+    weight: ''
   });
 
   const createdProduct = await product.save();

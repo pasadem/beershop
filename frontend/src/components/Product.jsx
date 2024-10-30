@@ -4,15 +4,34 @@ import { weightHandler } from "../utils/weightHundler";
 
 const Product = ({ product }) => {
 
-  
-  return (
-    <Card className="my-2  rounded">
-      <Link to={`/product/${product._id}`}>
-        <Card.Img
+  const sizeHandler = (product) => {
+    if (product.origin === 'Fermentis') {
+      return (
+        <>
+          <Card.Img
+          className="mx-4"
+          src={product.image}
+          variant="top"
+          style={{ height: "180px", width: "180px" }}
+        />
+        </>
+      )
+    }
+    return (
+      <>
+      <Card.Img
           src={product.image}
           variant="top"
           style={{ height: "180px" }}
         />
+      </>
+    )
+  } 
+
+  return (
+    <Card className="my-2  rounded">
+      <Link to={`/product/${product._id}`}>
+        {sizeHandler(product)}
       </Link>
 
       <Card.Body>

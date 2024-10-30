@@ -22,10 +22,10 @@ const ProductEditScreen = () => {
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState("");
   const [cropYear, setCropYear] = useState("");
-  const [alfa, setAlfa] = useState('');
-  const [ferment_temp, setFermentTemp] = useState('');
-  const [ferment_type, setFermentType] = useState('')
-  const [weight, setWeight] = useState('')
+  const [alfa, setAlfa] = useState("");
+  const [ferment_temp, setFermentTemp] = useState("");
+  const [ferment_type, setFermentType] = useState("");
+  const [weight, setWeight] = useState("");
 
   const {
     data: product,
@@ -104,14 +104,13 @@ const ProductEditScreen = () => {
       </Link>
       <FormContainer>
         <h4>Редагувати товар</h4>
-        
+
         {loadingUpdate && <Loader />}
         {isLoading ? (
           <Loader />
         ) : error ? (
           <Message variant="danger">{error.data.message}</Message>
         ) : (
-          
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="name">
               <Form.Label>Назва</Form.Label>
@@ -150,6 +149,15 @@ const ProductEditScreen = () => {
                 onChange={(e) => setFermentTemp(e.target.value)}
               ></Form.Control>
             </Form.Group>
+            <Form.Group controlId="price">
+              <Form.Label>Вміст альфа</Form.Label>
+              <Form.Control
+                type="textr"
+                placeholder="Альфа"
+                value={alfa}
+                onChange={(e) => setAlfa(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
 
             <Form.Group controlId="image">
               <Form.Label>Зображення</Form.Label>
@@ -170,10 +178,7 @@ const ProductEditScreen = () => {
             <Form.Group controlId="brand">
               <Form.Label>Виробник</Form.Label>
               <Form.Select>
-                <option>
-                  {origin}
-                </option>
-
+                <option>{origin}</option>
                 <option
                   type="text"
                   placeholder="Ввести виробника"
@@ -198,7 +203,50 @@ const ProductEditScreen = () => {
                 >
                   ПАР
                 </option>
+                <option
+                  type="text"
+                  placeholder="Ввести виробника"
+                  value={origin}
+                  onClick={() => setProducer("Chech Rep")}
+                >
+                  Чехія
+                </option>
+                <option
+                  type="text"
+                  placeholder="Ввести виробника"
+                  value={origin}
+                  onClick={() => setProducer("England")}
+                >
+                  Англія
+                </option>
+                <option
+                  type="text"
+                  placeholder="Ввести виробника"
+                  value={origin}
+                  onClick={() => setProducer("USA")}
+                >
+                  США
+                </option>
+                <option
+                  type="text"
+                  placeholder="Ввести виробника"
+                  value={origin}
+                  onClick={() => setProducer("Australia")}
+                >
+                  Австралія
+                </option>
+                <option
+                  type="text"
+                  placeholder="Ввести виробника"
+                  value={origin}
+                  onClick={() => setProducer("New Zeland")}
+                >
+                  Нова Зеландія
+                </option>
 
+                <div>
+                  <strong>Дріжджі</strong>
+                </div>
                 <option
                   type="text"
                   placeholder="Ввести виробника"
@@ -217,7 +265,6 @@ const ProductEditScreen = () => {
                 </option>
               </Form.Select>
             </Form.Group>
-
             <Form.Group controlId="countInStock">
               <Form.Label>Кількість на залишку</Form.Label>
               <Form.Control
@@ -227,14 +274,10 @@ const ProductEditScreen = () => {
                 onChange={(e) => setCountInStock(e.target.value)}
               ></Form.Control>
             </Form.Group>
-
             <Form.Group controlId="category">
               <Form.Label>Категорія</Form.Label>
               <Form.Select>
-                <option>
-                  {category}
-                </option>
-
+                <option>{category}</option>
                 <option
                   type="text"
                   placeholder="Ввести виробника"

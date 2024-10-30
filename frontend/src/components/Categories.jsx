@@ -24,7 +24,11 @@ const Categories = () => {
               <NavDropdown.Item as={Link} to="/hops" onClick={() => dispatch(updateProducer('Germany'))}>Німеччина</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/hops" onClick={() => dispatch(updateProducer('South Africa'))}>ПАР</NavDropdown.Item>
               <NavDropdown.Item as={Link} to="/hops" onClick={() => dispatch(updateProducer('Slovenia'))}>Словенія</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/hops" onClick={() => dispatch(updateProducer('Chech Republic'))}>Чехія</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/hops" onClick={() => dispatch(updateProducer('Chech Rep'))}>Чехія</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/hops" onClick={() => dispatch(updateProducer('USA'))}>США</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/hops" onClick={() => dispatch(updateProducer('Australia'))}>Асстралія</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/hops" onClick={() => dispatch(updateProducer('New Zeland'))}>Нова Зеландія</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/hops" onClick={() => dispatch(updateProducer('England'))}>Англія</NavDropdown.Item>   
             </NavDropdown>
       
        

@@ -15,7 +15,6 @@ const HopsScreen = () => {
   const category = useSelector(state => state.category.items.category)
   const producer = useSelector(state => state.category.items.producer)
 
-  console.log(category)
 
 
   const { data, isLoading, error } = useGetProductsQuery({

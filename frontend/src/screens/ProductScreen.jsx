@@ -33,6 +33,24 @@ const ProductScreen = () => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
 
+  const productHandler = (product) => {
+    if (product.category === "Yeast") {
+      return (
+        <>
+          <Row>Тип бродіння - верхній</Row>
+          <Row>Ідеальна температура бродіння: {product.ferment_temp}</Row>
+        </>
+      );
+    } else if (product.category === "Hops") {
+      return(
+      <>
+        <Row>Рік врожаю: {product.cropYear}</Row>
+        <Row>Вміст альфа кислот: {product.alfa}</Row>
+      </>
+      )
+    }
+  };
+
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
     navigate("/cart");
@@ -88,11 +106,8 @@ const ProductScreen = () => {
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Row>Ціна {weightHandler(product)}</Row>
-                  <Row>Упаковка: {product.weight}</Row>
-                  <Row>Тип бродіння - верхній</Row>
-                  <Row>
-                    Ідеальна температура бродіння: {product.ferment_temp}
-                  </Row>
+                  <Row>Упаковка: {product.weight} кг</Row>
+                  {productHandler(product)}
                   <Row>Виробник: {product.origin}</Row>
                 </ListGroup.Item>
               </ListGroup>
