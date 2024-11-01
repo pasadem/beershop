@@ -34,6 +34,7 @@ import { Provider } from "react-redux";
 import HopsScreen from "./screens/HopsScreen";
 import YeastScreen from "./screens/YeastScreen";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import DiscountScreen from "./screens/DiscountScreen";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -48,6 +49,7 @@ const router = createBrowserRouter(
       <Route path="/product/:id" element={<ProductScreen />} />
       <Route path="hops" element={<HopsScreen />} />
       <Route path="yeast" element={<YeastScreen />} />
+      <Route path="/discount" element={<DiscountScreen />} />
       <Route path="/cart" element={<CartScreen />} />
       <Route path="/login" element={<LoginScreen />} />
       <Route path="/register" element={<RegisterScreen />} />

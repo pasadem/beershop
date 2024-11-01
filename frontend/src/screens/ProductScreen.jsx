@@ -21,7 +21,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Meta from "../components/Meta";
 import { addToCart } from "../slices/cartSlice";
-import { weightHandler } from "../utils/weightHundler";
+import { discountCalc, discountHandler, weightHandler } from "../utils/priceHandlers";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -105,7 +105,7 @@ const ProductScreen = () => {
                   <Image src={product.image} alt={product.name} fluid />
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <Row>Ціна {weightHandler(product)}</Row>
+                  <Row>Ціна {discountHandler(product)}{weightHandler(product)}</Row>
                   <Row>Упаковка: {product.weight} кг</Row>
                   {productHandler(product)}
                   <Row>Виробник: {product.origin}</Row>
@@ -129,7 +129,7 @@ const ProductScreen = () => {
                 </ListGroup.Item>
               </ListGroup>
             </Col>
-            <Col md={3}>
+            <Col md={3} className="py-3">
               <Card>
                 <ListGroup variant="flush">
                   <ListGroup.Item>
@@ -137,7 +137,7 @@ const ProductScreen = () => {
                       <Col>Ціна:</Col>
 
                       <Col>
-                        <strong>{product.price}</strong>
+                        <strong>{discountCalc(product)} грн</strong>
                       </Col>
                     </Row>
                   </ListGroup.Item>

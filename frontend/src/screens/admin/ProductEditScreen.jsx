@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Form, Button, Container } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
 import FormContainer from "../../components/FormContainer";
@@ -10,6 +10,7 @@ import {
   useUpdateProductMutation,
   useUploadProductImageMutation,
 } from "../../slices/productsApiSlice";
+import { discountCalc } from "../../utils/priceHandlers";
 
 const ProductEditScreen = () => {
   const { id: productId } = useParams();
@@ -19,13 +20,14 @@ const ProductEditScreen = () => {
   const [image, setImage] = useState("");
   const [origin, setProducer] = useState("");
   const [category, setCategory] = useState("");
-  const [countInStock, setCountInStock] = useState(0);
+  const [countInStock, setCountInStock] = useState(2);
   const [description, setDescription] = useState("");
   const [cropYear, setCropYear] = useState("");
   const [alfa, setAlfa] = useState("");
   const [ferment_temp, setFermentTemp] = useState("");
   const [ferment_type, setFermentType] = useState("");
   const [weight, setWeight] = useState("");
+  const [discount, setDiscount] = useState(0);
 
   const {
     data: product,
@@ -59,6 +61,7 @@ const ProductEditScreen = () => {
         ferment_temp,
         ferment_type,
         weight,
+        discount,
       }).unwrap(); // NOTE: here we need to unwrap the Promise to catch any rejection in our catch block
       toast.success("Товар оновлено");
       refetch();
@@ -82,6 +85,7 @@ const ProductEditScreen = () => {
       setFermentTemp(product.ferment_temp);
       setFermentType(product.ferment_type);
       setWeight(product.weight);
+      setDiscount(product.discount);
     }
   }, [product]);
 
@@ -132,10 +136,19 @@ const ProductEditScreen = () => {
               ></Form.Control>
             </Form.Group>
             <Form.Group controlId="price">
+              <Form.Label>Знижка</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Знижка"
+                value={discount}
+                onChange={(e) => setDiscount(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group controlId="price">
               <Form.Label>Вага</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter price"
+                placeholder="Вага"
                 value={weight}
                 onChange={(e) => setWeight(e.target.value)}
               ></Form.Control>
@@ -179,6 +192,10 @@ const ProductEditScreen = () => {
               <Form.Label>Виробник</Form.Label>
               <Form.Select>
                 <option>{origin}</option>
+                <option className="fw-bold" disabled>
+                  Хміль
+                </option>
+                <hr />
                 <option
                   type="text"
                   placeholder="Ввести виробника"
@@ -244,9 +261,12 @@ const ProductEditScreen = () => {
                   Нова Зеландія
                 </option>
 
-                <div>
-                  <strong>Дріжджі</strong>
-                </div>
+                <option disabled></option>
+
+                <option className="fw-bold" disabled>
+                  Дріжджі
+                </option>
+
                 <option
                   type="text"
                   placeholder="Ввести виробника"

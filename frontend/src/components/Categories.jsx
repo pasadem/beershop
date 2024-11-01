@@ -64,7 +64,7 @@ const Categories = () => {
         <Nav.Link as={Link} to="/cart" className="mx-2 link-dark">
           Інше
         </Nav.Link>
-        <Nav.Link as={Link} to="/cart" className="mx-2 link-dark">
+        <Nav.Link as={Link} to="/discount" className="mx-2 link-dark">
           Знижки
         </Nav.Link>
         <Nav.Link as={Link} to="/cart" className="mx-2 link-dark">

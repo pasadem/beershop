@@ -1,4 +1,4 @@
-import { Table, Button, Row, Col } from "react-bootstrap";
+import { Table, Button, Row, Col, ButtonGroup } from "react-bootstrap";
 import { FaEdit, FaPlus, FaTrash } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import Message from "../../components/Message";
@@ -16,17 +16,19 @@ import { useState } from "react";
 const ProductListScreen = () => {
   const { pageNumber } = useParams();
 
-  const [category, setCategory] = useState('')
+  const [category, setCategory] = useState("Hops");
 
   const { data, isLoading, error, refetch } = useGetProductsQuery({
     pageNumber,
   });
 
+  // console.log(filteredByCategory(data.products, 'Hops', ''))
+
   const [deleteProduct, { isLoading: loadingDelete }] =
     useDeleteProductMutation();
 
   const deleteHandler = async (id) => {
-    if (window.confirm("Are you sure")) {
+    if (window.confirm("Ви впевнені, що хочете видалити товар?")) {
       try {
         await deleteProduct(id);
         refetch();
@@ -44,6 +46,7 @@ const ProductListScreen = () => {
       try {
         await createProduct();
         refetch();
+        setCategory("new");
       } catch (err) {
         toast.error(err?.data?.message || err.error);
       }
@@ -57,26 +60,22 @@ const ProductListScreen = () => {
           <h1>Товари</h1>
         </Col>
         <Col className="text-end">
-          <Button className="my-3" onClick={(createProductHandler)}>
+          <Button className="my-3" onClick={createProductHandler}>
             <FaPlus /> Створити товар
           </Button>
         </Col>
       </Row>
       <Row className="align-items-center">
-      <Col className="text-end">
-          <Button className="my-3" onClick={() => setCategory('Hops')}>
-            Хміль
-          </Button>
-          <Button className="my-3" onClick={() => setCategory('Yeast')}>
-            Дріжджі
-          </Button>
-          <Button className="my-3" onClick={() => setCategory('Malt')}>
-            Солод
-          </Button>
+        <Col className="text-end">
+          <ButtonGroup className="pb-3">
+            <Button onClick={() => setCategory("Hops")}>Хміль</Button>
+            <Button onClick={() => setCategory("Yeast")}>Дріжджі</Button>
+            <Button onClick={() => setCategory("Malt")}>Солод</Button>
+            <Button onClick={() => setCategory("Malt")}>Обладнання</Button>
+
+          </ButtonGroup>
         </Col>
       </Row>
-      
-
       {loadingCreate && <Loader />}
       {loadingDelete && <Loader />}
       {isLoading ? (
@@ -88,28 +87,26 @@ const ProductListScreen = () => {
           <Table striped bordered hover responsive className="table-sm">
             <thead>
               <tr>
-                
                 <th>НАЗВА</th>
                 <th>ЦІНА</th>
 
                 <th>КАТЕГОРІЯ</th>
                 <th>ВИРОБНИК</th>
                 <th>НАЯВНІСТЬ</th>
-                <th>РІК ВРОЖАЮ</th>
+                <th>ЗНИЖКА</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              {(data.products).map((product) => (
+              {filteredByCategory(data.products, category).map((product) => (
                 <tr key={product._id}>
-                  
                   <td>{product.name}</td>
                   <td>${product.price}</td>
 
                   <td>{product.category}</td>
                   <td>{product.origin}</td>
                   <td>{product.countInStock}</td>
-                  <td>{product.cropYear}</td>
+                  <td>{product.discount}</td>
                   <td>
                     <Button
                       as={Link}

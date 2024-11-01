@@ -1,4 +1,4 @@
-const filteredByCategory = (products, cat, producer) => {
+const filteredByCategory = (products, cat, producer = '') => {
   if (producer === '') {
     return products.filter(product => product.category === cat)
   }
