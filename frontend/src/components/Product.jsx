@@ -26,7 +26,7 @@ const Product = ({ product }) => {
       return (
         <>
           <Card.Img
-            className="mx-4"
+            
             src={product.image}
             variant="top"
             style={{ height: "180px", width: "180px" }}
@@ -46,21 +46,20 @@ const Product = ({ product }) => {
   };
 
   return (
-    <Card className="my-2  rounded">
+    <Card className="my-2 p-2 text-center rounded">
       <Link to={`/product/${product._id}`}>
         {sizeHandler(product)}
         {addDiscount(product)}
       </Link>
 
-      <Card.Body>
+      
         <Link to={`/product/${product._id}`}>
-          <Card.Text as="div" className="product-title">
-            <strong>{product.name}</strong>
-          </Card.Text>
+          <div className=" text-start">            <strong>{product.name}</strong>
+          </div>
         </Link>
-        <Card.Text as="div">Виробник: {product.origin}</Card.Text>
-        <Card.Text as="div">{discountHandler(product)}</Card.Text>
-      </Card.Body>
+        <Card.Text className="text-start" as="div">Виробник: {product.origin}</Card.Text>
+        <h9 className="text-start">{discountHandler(product)}</h9>
+      
     </Card>
   );
 };
