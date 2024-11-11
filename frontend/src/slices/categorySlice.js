@@ -14,6 +14,7 @@ const cartSlice = createSlice({
         state.items.producer = action.payload;
         
       },
+      
   },
 });
 

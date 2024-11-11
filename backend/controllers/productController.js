@@ -72,7 +72,7 @@ const createProduct = asyncHandler(async (req, res) => {
     bacteria: 'd',
     countInStock: 2,
     weight: '',
-    discount
+    discount: 0
   });
 
   const createdProduct = await product.save();

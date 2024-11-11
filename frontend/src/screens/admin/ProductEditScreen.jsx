@@ -11,6 +11,7 @@ import {
   useUploadProductImageMutation,
 } from "../../slices/productsApiSlice";
 import { discountCalc } from "../../utils/priceHandlers";
+import { hopsCategoryData } from "../../products";
 
 const ProductEditScreen = () => {
   const { id: productId } = useParams();
@@ -195,71 +196,20 @@ const ProductEditScreen = () => {
                 <option className="fw-bold" disabled>
                   Хміль
                 </option>
-                <hr />
-                <option
-                  type="text"
-                  placeholder="Ввести виробника"
-                  value={origin}
-                  onClick={() => setProducer("Germany")}
-                >
-                  Німеччина
-                </option>
-                <option
-                  type="text"
-                  placeholder="Ввести виробника"
-                  value={origin}
-                  onClick={() => setProducer("Slovenia")}
-                >
-                  Словенія
-                </option>
-                <option
-                  type="text"
-                  placeholder="Ввести виробника"
-                  value={origin}
-                  onClick={() => setProducer("South Africa")}
-                >
-                  ПАР
-                </option>
-                <option
-                  type="text"
-                  placeholder="Ввести виробника"
-                  value={origin}
-                  onClick={() => setProducer("Chech Rep")}
-                >
-                  Чехія
-                </option>
-                <option
-                  type="text"
-                  placeholder="Ввести виробника"
-                  value={origin}
-                  onClick={() => setProducer("England")}
-                >
-                  Англія
-                </option>
-                <option
-                  type="text"
-                  placeholder="Ввести виробника"
-                  value={origin}
-                  onClick={() => setProducer("USA")}
-                >
-                  США
-                </option>
-                <option
-                  type="text"
-                  placeholder="Ввести виробника"
-                  value={origin}
-                  onClick={() => setProducer("Australia")}
-                >
-                  Австралія
-                </option>
-                <option
-                  type="text"
-                  placeholder="Ввести виробника"
-                  value={origin}
-                  onClick={() => setProducer("New Zeland")}
-                >
-                  Нова Зеландія
-                </option>
+                <hr/>
+                
+                  {hopsCategoryData.map((item, i) => (
+                    <option
+                      key={i}
+                      as={Link}
+                      to="/hops"
+                      onClick={() => setProducer(item.eng)}
+                    >
+                      {item.ukr}
+                    </option>
+                  ))}
+                
+                 
 
                 <option disabled></option>
 
@@ -313,6 +263,14 @@ const ProductEditScreen = () => {
                   onClick={() => setCategory("Yeast")}
                 >
                   Дріжджі
+                </option>
+                <option
+                  type="text"
+                  placeholder="Ввести виробника"
+                  value={category}
+                  onClick={() => setCategory("Equipment")}
+                >
+                  Обладнання
                 </option>
               </Form.Select>
             </Form.Group>

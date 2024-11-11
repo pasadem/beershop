@@ -29,6 +29,7 @@ import ProductListScreen from "./screens/admin/ProductListScreen";
 import ProductEditScreen from "./screens/admin/ProductEditScreen";
 import UserListScreen from "./screens/admin/UserListScreen";
 import UserEditScreen from "./screens/admin/UserEditScreen";
+import EquipmentScreen from "./screens/EquipmentScreen";
 import store from "./store";
 import { Provider } from "react-redux";
 import HopsScreen from "./screens/HopsScreen";
@@ -50,6 +51,7 @@ const router = createBrowserRouter(
       <Route path="hops" element={<HopsScreen />} />
       <Route path="yeast" element={<YeastScreen />} />
       <Route path="/discount" element={<DiscountScreen />} />
+      <Route path="/equipment" element={<EquipmentScreen />} />
       <Route path="/cart" element={<CartScreen />} />
       <Route path="/login" element={<LoginScreen />} />
       <Route path="/register" element={<RegisterScreen />} />
