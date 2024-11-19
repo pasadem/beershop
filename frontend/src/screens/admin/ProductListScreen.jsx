@@ -16,7 +16,7 @@ import { useState } from "react";
 const ProductListScreen = () => {
   const { pageNumber } = useParams();
 
-  const [category, setCategory] = useState("Hops");
+  const [category, setCategory] = useState("");
 
   const { data, isLoading, error, refetch } = useGetProductsQuery({
     pageNumber,
@@ -68,10 +68,11 @@ const ProductListScreen = () => {
       <Row className="align-items-center">
         <Col className="text-end">
           <ButtonGroup className="pb-3">
+          
             <Button onClick={() => setCategory("Hops")}>Хміль</Button>
             <Button onClick={() => setCategory("Yeast")}>Дріжджі</Button>
             <Button onClick={() => setCategory("Malt")}>Солод</Button>
-            <Button onClick={() => setCategory("Malt")}>Обладнання</Button>
+            <Button onClick={() => setCategory("Equipment")}>Обладнання</Button>
 
           </ButtonGroup>
         </Col>
@@ -101,7 +102,7 @@ const ProductListScreen = () => {
               {filteredByCategory(data.products, category).map((product) => (
                 <tr key={product._id}>
                   <td>{product.name}</td>
-                  <td>${product.price}</td>
+                  <td>{product.price}.00</td>
 
                   <td>{product.category}</td>
                   <td>{product.origin}</td>

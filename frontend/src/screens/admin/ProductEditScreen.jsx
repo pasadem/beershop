@@ -11,7 +11,7 @@ import {
   useUploadProductImageMutation,
 } from "../../slices/productsApiSlice";
 import { discountCalc } from "../../utils/priceHandlers";
-import { hopsCategoryData } from "../../products";
+import { hopsCategoryData, equipmentCategoryData } from "../../products";
 
 const ProductEditScreen = () => {
   const { id: productId } = useParams();
@@ -233,6 +233,25 @@ const ProductEditScreen = () => {
                 >
                   LALLEMAND
                 </option>
+                <option className="fw-bold" disabled>
+                  Обладнання
+                </option>
+                <hr/>
+                
+                  {equipmentCategoryData.map((item, i) => (
+                    <option
+                      key={i}
+                      as={Link}
+                      to="/hops"
+                      onClick={() => setProducer(item.eng)}
+                    >
+                      {item.ukr}
+                    </option>
+                  ))}
+                
+                 
+
+                <option disabled></option>
               </Form.Select>
             </Form.Group>
             <Form.Group controlId="countInStock">
