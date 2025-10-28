@@ -4,7 +4,7 @@ import { weightHandler } from "../utils/priceHandlers";
 import { discountHandler}  from "../utils/priceHandlers";
 
 const Product = ({ product }) => {
-  console.log(product.discount)
+  
   const addDiscount = (product) => {
     if (product.discount !== 0) {
       return (
